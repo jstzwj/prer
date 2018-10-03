@@ -35,14 +35,21 @@
                         </v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-subheader class="mt-3 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
                 <v-list>
-                    <v-list-tile v-for="item in items2" :key="item.text" avatar @click="">
-                        <v-list-tile-avatar>
-                            <img :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`" alt="">
-                        </v-list-tile-avatar>
-                        <v-list-tile-title v-text="item.text"></v-list-tile-title>
-                    </v-list-tile>
+                    <v-list-group no-action>
+                        <v-list-tile slot="activator">
+                            <v-list-tile-content>
+                                <v-list-tile-title>SUBSCRIPTIONS</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <v-list-tile v-for="item in items2" :key="item.text" avatar @click="">
+                            <v-list-tile-avatar>
+                                <img :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`" alt="">
+                            </v-list-tile-avatar>
+                            <v-list-tile-title v-text="item.text"></v-list-tile-title>
+                        </v-list-tile>
+                    </v-list-group>
                 </v-list>
                 <v-list-tile class="mt-3" @click="">
                     <v-list-tile-action>
