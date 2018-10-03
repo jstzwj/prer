@@ -91,51 +91,7 @@
                     </v-list>
                 </v-menu>
             </v-layout>
-            <v-layout row align-center style="max-width: 100px">
-                <v-dialog v-model="dialog" persistent max-width="500px">
-                    <v-btn slot="activator" color="primary" dark>Login</v-btn>
-                    <v-card>
-                        <v-card-title>
-                            <span class="headline">User Profile</span>
-                        </v-card-title>
-                        <v-card-text>
-                            <v-container grid-list-md>
-                                <v-layout wrap>
-                                    <v-flex xs12 sm6 md4>
-                                        <v-text-field label="Legal first name" required></v-text-field>
-                                    </v-flex>
-                                    <v-flex xs12 sm6 md4>
-                                        <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-                                    </v-flex>
-                                    <v-flex xs12 sm6 md4>
-                                        <v-text-field label="Legal last name" hint="example of persistent helper text"
-                                            persistent-hint required></v-text-field>
-                                    </v-flex>
-                                    <v-flex xs12>
-                                        <v-text-field label="Email" required></v-text-field>
-                                    </v-flex>
-                                    <v-flex xs12>
-                                        <v-text-field label="Password" type="password" required></v-text-field>
-                                    </v-flex>
-                                    <v-flex xs12 sm6>
-                                        <v-select :items="['0-17', '18-29', '30-54', '54+']" label="Age" required></v-select>
-                                    </v-flex>
-                                    <v-flex xs12 sm6>
-                                        <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                                            label="Interests" multiple chips></v-autocomplete>
-                                    </v-flex>
-                                </v-layout>
-                            </v-container>
-                            <small>*indicates required field</small>
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                            <v-btn color="blue darken-1" flat @click.native="dialog = false">Save</v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
-            </v-layout>
+
         </v-toolbar>
         <v-content>
             <v-container fill-height grid-list-md>
@@ -177,40 +133,10 @@
             </v-container>
         </v-content>
     </v-app>
-
     <script>
         new Vue({
             el: '#inspire',
             data: {
-                drawer: true,
-                nav_items: [
-                    { icon: 'trending_up', text: 'Most Popular' },
-                    { icon: 'subscriptions', text: 'Subscriptions' },
-                    { icon: 'history', text: 'History' },
-                    { icon: 'featured_play_list', text: 'Playlists' },
-                    { icon: 'watch_later', text: 'Watch Later' }
-                ],
-                subscripion_items: [
-                    { picture: 28, text: 'Joseph' },
-                    { picture: 38, text: 'Apple' },
-                    { picture: 48, text: 'Xbox Ahoy' },
-                    { picture: 58, text: 'Nokia' },
-                    { picture: 78, text: 'MKBHD' }
-                ],
-                user_items: [
-                    { icon: 'settings', title: 'Setting' },
-                    { icon: 'help', title: 'Help' },
-                    { icon: 'exit_to_app', title: 'Log out' },
-                    { icon: 'feedback', title: 'Feed back' }
-                ]
-            },
-            methods: {
-                reverseMessage: function () {
-                    this.message = this.message.split('').reverse().join('')
-                }
-            },
-            props: {
-                source: String
             }
         })
     </script>
