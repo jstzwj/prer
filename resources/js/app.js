@@ -16,7 +16,16 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('sidebar-component', require('./components/SidebarComponent.vue'));
+Vue.component('navbar-component', require('./components/NavbarComponent.vue'));
+
+import Vue from 'vue'
+import App from './App.vue'
+import Vuetify from 'vuetify'
+import '../css/vuetify.min.css'
+Vue.use(Vuetify)
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    render: h => h(App)
 });

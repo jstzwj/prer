@@ -50,41 +50,5 @@
 </v-container>
 @endsection
 
-@section('vue_script')
-<script>
-    new Vue({
-        el: '#inspire',
-        data: {
-            drawer: true,
-            nav_items: [
-                { icon: 'trending_up', text: 'Most Popular' },
-                { icon: 'subscriptions', text: 'Subscriptions' },
-                { icon: 'history', text: 'History' },
-                { icon: 'featured_play_list', text: 'Playlists' },
-                { icon: 'watch_later', text: 'Watch Later' }
-            ],
-            subscripion_items: [
-                { picture: 28, text: 'Joseph' },
-                { picture: 38, text: 'Apple' },
-                { picture: 48, text: 'Xbox Ahoy' },
-                { picture: 58, text: 'Nokia' },
-                { picture: 78, text: 'MKBHD' }
-            ],
-            user_items: [
-                { icon: 'settings', title: 'Setting' },
-                { icon: 'help', title: 'Help' },
-                { icon: 'exit_to_app', title: 'Log out' },
-                { icon: 'feedback', title: 'Feed back' }
-            ]
-        },
-        methods: {
-            reverseMessage: function () {
-                this.message = this.message.split('').reverse().join('')
-            }
-        },
-        props: {
-            source: String
-        }
-    })
-</script>
+@section('js_script')
 @endsection
