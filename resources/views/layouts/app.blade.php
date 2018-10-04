@@ -24,7 +24,7 @@
 <body>
     <v-app id="inspire">
         @section('sidebar')
-        <v-navigation-drawer v-model="drawer" fixed clipped app>
+        <v-navigation-drawer id="navbar" v-model="drawer" fixed clipped app>
             <v-list dense>
                 <v-list-tile v-for="item in nav_items" :key="item.text" @click="">
                     <v-list-tile-action>
