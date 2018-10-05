@@ -2,52 +2,26 @@
 
 @section('title', 'Prer')
 
-@section('sidebar')
+@section('header')
 @parent
 @endsection
 
-@section('navbar')
-@parent
+@section('main')
+<el-row :gutter="10">
+    <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
+        <div>123</div>
+    </el-col>
+    <el-col :xs="16" :sm="16" :md="16" :lg="16" :xl="16">
+        <div>12</div>
+    </el-col>
+    <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+        <div>1</div>
+    </el-col>
+</el-row>
 @endsection
 
-@section('content')
-<v-container fill-height grid-list-md>
-    <v-layout justify-start align-start row wrap>
-        <v-flex xs12 sm6 md3 xl2>
-            <v-card>
-                <v-img src="https://cdn.vuetifyjs.com/images/cards/house.jpg" height="200px">
-                    <v-container fill-height fluid pa-2>
-                        <v-layout fill-height>
-                            <v-flex xs12 align-end flexbox>
-                                <span class="headline white--text"></span>
-                            </v-flex>
-                        </v-layout>
-                    </v-container>
-                </v-img>
-
-                <v-card-title primary-title>
-                    <div>
-                        <div class="title mb-0">Valley Safari</div>
-                        <div>JasonWang</div>
-                    </div>
-                </v-card-title>
-
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn icon>
-                        <v-icon>favorite</v-icon>
-                    </v-btn>
-                    <v-btn icon>
-                        <v-icon>bookmark</v-icon>
-                    </v-btn>
-                    <v-btn icon>
-                        <v-icon>share</v-icon>
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-flex>
-    </v-layout>
-</v-container>
+@section('footer')
+@parent
 @endsection
 
 @section('js_script')

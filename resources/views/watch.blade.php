@@ -2,45 +2,28 @@
 
 @section('title', 'Prer')
 
-@section('sidebar')
+@section('header')
 @parent
 @endsection
 
-@section('navbar')
-@parent
-@endsection
-
-@section('content')
-<v-container fill-height grid-list-md>
-    <v-layout justify-start align-start row wrap>
-        <v-flex xs12>
+@section('main')
+<el-row :gutter="10">
+    <el-col :xs="16" :sm="16" :md="16" :lg="16" :xl="16">
+        <div>
             <div id="dplayer"></div>
-        </v-flex>
-    </v-layout>
-</v-container>
+        </div>
+    </el-col>
+    <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
+        <div>123</div>
+    </el-col>
+    <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+        <div>1</div>
+    </el-col>
+</el-row>
 @endsection
 
-@section('vue_script')
-<script>
-    new Vue({
-        el: '#inspire',
-        data: {
-            drawer: true,
-            subscripion_items: [
-                { picture: 28, text: 'Joseph' },
-                { picture: 38, text: 'Apple' },
-                { picture: 48, text: 'Xbox Ahoy' },
-                { picture: 58, text: 'Nokia' },
-                { picture: 78, text: 'MKBHD' }
-            ]
-        },
-        methods: {
-            reverseMessage: function () {
-                this.message = this.message.split('').reverse().join('')
-            }
-        }
-    })
-</script>
+@section('footer')
+@parent
 @endsection
 
 @section('js_script')
