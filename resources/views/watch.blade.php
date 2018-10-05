@@ -14,7 +14,10 @@
         </div>
     </el-col>
     <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
-        <div>123</div>
+        <div>
+            <playlist-component>
+            </playlist-component>
+        </div>
     </el-col>
     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <div>1</div>
@@ -32,7 +35,7 @@
         container: document.getElementById('dplayer'),
         screenshot: true,
         video: {
-            url: 'demo.mp4',
+            url: 'http://www.w3school.com.cn/i/movie.ogg',
             pic: 'demo.jpg',
             thumbnails: 'thumbnails.jpg'
         },

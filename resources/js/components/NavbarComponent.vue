@@ -25,3 +25,13 @@
         }
     }
 </script>
+
+<style>
+    .left-navbar{
+        float: left;
+    }
+
+    .right-navbar{
+        float: right;
+    }
+</style>

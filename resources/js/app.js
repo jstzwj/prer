@@ -22,6 +22,7 @@ Vue.use(ElementUI);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('sidebar-component', require('./components/SidebarComponent.vue'));
 Vue.component('navbar-component', require('./components/NavbarComponent.vue'));
+Vue.component('playlist-component', require('./components/PlaylistComponent.vue'));
 
 
 const app = new Vue({
