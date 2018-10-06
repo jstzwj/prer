@@ -15,16 +15,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/watch', function () {
-    return view('watch');
-});
-
-Route::get('/signin', function () {
-    return view('signin');
-});
-
 Route::post('/signin', 'UserController@signin');
 
-Route::get('/signup', function () {
-    return view('signup');
+Route::get('{path}', function () {
+    return view('home');
 });

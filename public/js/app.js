@@ -25727,8 +25727,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_bootstrap_dist_js_bootstrap_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_bootstrap_dist_js_bootstrap_min_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_font_awesome_css_font_awesome_css__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_font_awesome_css_font_awesome_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_font_awesome_css_font_awesome_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_Home_vue__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__pages_Home_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__App_vue__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__App_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Home_vue__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__pages_Home_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_Signin_vue__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_Signin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__pages_Signin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_Signup_vue__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_Signup_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__pages_Signup_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -25741,6 +25747,7 @@ __webpack_require__(83);
 window.Vue = __webpack_require__(3);
 
 
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
 // import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -25767,6 +25774,7 @@ $.ajaxSetup({
  */
 
 
+
 Vue.component('example-component', __webpack_require__(207));
 Vue.component('sidebar-component', __webpack_require__(210));
 Vue.component('navbar-component', __webpack_require__(216));
@@ -25774,21 +25782,25 @@ Vue.component('footer-component', __webpack_require__(221));
 Vue.component('playlist-component', __webpack_require__(226));
 Vue.component('signin-component', __webpack_require__(231));
 Vue.component('signup-component', __webpack_require__(234));
-/*
-const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
-]
 
-const router = new VueRouter({
-    routes
-})
-*/
+Vue.component('main-layout', __webpack_require__(246));
+
+
+
+
+
+var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_6__pages_Home_vue___default.a }, { path: '/signin', component: __WEBPACK_IMPORTED_MODULE_7__pages_Signin_vue___default.a }, { path: '/signup', component: __WEBPACK_IMPORTED_MODULE_8__pages_Signup_vue___default.a }];
+
+var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    mode: 'history',
+    routes: routes
+});
 
 var app = new Vue({
     el: '#app',
+    router: router,
     render: function render(h) {
-        return h(__WEBPACK_IMPORTED_MODULE_5__pages_Home_vue___default.a);
+        return h(__WEBPACK_IMPORTED_MODULE_5__App_vue___default.a);
     }
 });
 
@@ -48983,8 +48995,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -49019,35 +49029,36 @@ var render = function() {
         _vm._v("Prer")
       ]),
       _vm._v(" "),
-      _c(
-        "nav",
-        { staticClass: "my-2 my-md-0 mr-md-3" },
-        [
-          _c("el-badge", { staticClass: "item", attrs: { value: 3 } }, [
-            _c("i", { staticClass: "fa fa-envelope-o" })
-          ])
-        ],
-        1
-      ),
+      _vm._m(0),
       _vm._v(" "),
       _c(
-        "a",
+        "router-link",
         {
           staticClass: "btn btn-outline-primary mx-2",
-          attrs: { href: "/signup" }
+          attrs: { to: "/signup" }
         },
         [_vm._v("Sign up")]
       ),
       _vm._v(" "),
       _c(
-        "a",
-        { staticClass: "btn btn-primary mx-2", attrs: { href: "/signin" } },
+        "router-link",
+        { staticClass: "btn btn-primary mx-2", attrs: { to: "/signin" } },
         [_vm._v("Sign in")]
       )
-    ]
+    ],
+    1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "my-2 my-md-0 mr-md-3" }, [
+      _c("i", { staticClass: "fa fa-envelope-o" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -49938,8 +49949,73 @@ if (false) {
 /* 238 */,
 /* 239 */,
 /* 240 */,
-/* 241 */,
-/* 242 */,
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(242)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/App.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f348271a", Component.options)
+  } else {
+    hotAPI.reload("data-v-f348271a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "app" } }, [_c("router-view")], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f348271a", module.exports)
+  }
+}
+
+/***/ }),
 /* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -52566,7 +52642,7 @@ if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (VueRouter);
+/* harmony default export */ __webpack_exports__["a"] = (VueRouter);
 
 
 /***/ }),
@@ -52765,6 +52841,192 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-b3c5cf30", module.exports)
+  }
+}
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = __webpack_require__(254)
+/* template */
+var __vue_template__ = __webpack_require__(255)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/pages/Signin.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-69b4216b", Component.options)
+  } else {
+    hotAPI.reload("data-v-69b4216b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 254 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue__);
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'signin-component': __WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue___default.a
+    }
+});
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main-layout", [_c("signin-component")], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-69b4216b", module.exports)
+  }
+}
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(9)
+/* script */
+var __vue_script__ = __webpack_require__(257)
+/* template */
+var __vue_template__ = __webpack_require__(258)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/pages/Signup.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7e4a77e1", Component.options)
+  } else {
+    hotAPI.reload("data-v-7e4a77e1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 257 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SignupComponent_vue__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SignupComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_SignupComponent_vue__);
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'signup-component': __WEBPACK_IMPORTED_MODULE_1__components_SignupComponent_vue___default.a
+    }
+});
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main-layout", [_c("signup-component")], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7e4a77e1", module.exports)
   }
 }
 

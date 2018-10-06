@@ -10,6 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
 // import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
@@ -36,7 +37,8 @@ $.ajaxSetup({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Home from './pages/Home.vue'
+ import App from './App.vue'
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('sidebar-component', require('./components/SidebarComponent.vue'));
 Vue.component('navbar-component', require('./components/NavbarComponent.vue'));
@@ -44,18 +46,27 @@ Vue.component('footer-component', require('./components/FooterComponent.vue'));
 Vue.component('playlist-component', require('./components/PlaylistComponent.vue'));
 Vue.component('signin-component', require('./components/SigninComponent.vue'));
 Vue.component('signup-component', require('./components/SignupComponent.vue'));
-/*
+
+Vue.component('main-layout', require('./layouts/MainLayout.vue'));
+
+import Home from './pages/Home.vue'
+import Signin from './pages/Signin.vue'
+import Signup from './pages/Signup.vue'
+
 const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
+    { path: '/', component: Home },
+    { path: '/signin', component: Signin },
+    { path: '/signup', component: Signup }
 ]
 
 const router = new VueRouter({
-    routes
+    mode: 'history',
+    routes: routes
 })
-*/
+
 
 const app = new Vue({
     el: '#app',
-    render: h=>h(Home)
+    router: router,
+    render: h=>h(App)
 });
