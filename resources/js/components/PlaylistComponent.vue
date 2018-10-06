@@ -1,18 +1,17 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="8" v-for="(item, index) in playList" v-bind:key="item.title">
-                <el-card :body-style="{ padding: '0px' }">
-                    <img v-bind:src="item.thumbnail" class="image">
-                    <div style="padding: 14px;">
-                        <span>{{item.title}}</span>
-                        <div class="bottom clearfix">
-                            {{item.author}}
-                        </div>
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item d-flex justify-content-between lh-condensed" v-for="(item, index) in playList"
+                    v-bind:key="item.title">
+                    <img class="rounded float-left video-thumbnail" v-bind:src="item.thumbnail" alt="Card image cap">
+                    <div>
+                        <h6 class="my-0">{{item.title}}</h6>
+                        <small class="text-muted">{{item.author}}</small>
                     </div>
-                </el-card>
-            </el-col>
-        </el-row>
+                </a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -24,6 +23,11 @@
                 playList: [{
                     thumbnail: "https://cn.vuejs.org/images/logo.png",
                     title: "1",
+                    author: "123"
+                },
+                {
+                    thumbnail: "https://cn.vuejs.org/images/logo.png",
+                    title: "2",
                     author: "123"
                 }]
             };
@@ -37,34 +41,7 @@
 </script>
 
 <style>
-    .author {
-        font-size: 13px;
-        color: #999;
-    }
-
-    .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
-
-    .button {
-        padding: 0;
-        float: right;
-    }
-
-    .image {
-        max-height: 64px;
-        max-width: 64px;
-        display: block;
-    }
-
-    .clearfix:before,
-    .clearfix:after {
-        display: table;
-        content: "";
-    }
-
-    .clearfix:after {
-        clear: both
+    .video-thumbnail {
+        height: 40px;
     }
 </style>

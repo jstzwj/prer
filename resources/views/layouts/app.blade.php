@@ -20,20 +20,18 @@
 
         .el-footer {
             padding: 20px 0;
-            color: #fff;
-            background-color: #34495e;
             text-align: center;
-            line-height: 60px;
+            line-height: 23px;
         }
 
         .el-aside {
             text-align: center;
-            line-height: 200px;
+            line-height: 23px;
         }
 
         .el-main {
             text-align: center;
-            line-height: 160px;
+            line-height: 23px;
         }
 
         body>.el-container {
@@ -42,11 +40,11 @@
 
         .el-container:nth-child(5) .el-aside,
         .el-container:nth-child(6) .el-aside {
-            line-height: 260px;
+            line-height: 23px;
         }
 
         .el-container:nth-child(7) .el-aside {
-            line-height: 320px;
+            line-height: 23px;
         }
     </style>
 
@@ -73,11 +71,7 @@
             </el-main>
             <el-footer>
                 @section('footer')    
-                <el-row>
-                    <el-col :span="24">
-                        <div>Copyright © 2018 Jason Wang</div>
-                    </el-col>
-                </el-row>
+                <footer-component></footer-component>
                 @show
             </el-footer>
         </el-container>

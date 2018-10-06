@@ -20,7 +20,9 @@
         </div>
     </el-col>
     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-        <div>1</div>
+        <div>
+            123
+        </div>
     </el-col>
 </el-row>
 @endsection
