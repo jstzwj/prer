@@ -12,8 +12,8 @@
             <i class="fa fa-envelope-o"></i>
         </el-badge>
       </nav>
-      <a class="btn btn-outline-primary mx-2" href="#">Sign up</a>
-      <a class="btn btn-primary mx-2" href="#">Log in</a>
+      <a class="btn btn-outline-primary mx-2" href="/signup">Sign up</a>
+      <a class="btn btn-primary mx-2" href="/signin">Sign in</a>
     </div>
 </template>
 

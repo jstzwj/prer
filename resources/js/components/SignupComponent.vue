@@ -4,19 +4,16 @@
             <div class="col-md-4 offset-md-4">
                 <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px">
                     <el-form-item label="User Name" prop="name">
-                        <el-input v-model="ruleForm2.pass" autocomplete="off"></el-input>
+                        <el-input v-model="ruleForm2.name" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="E-mail" prop="mail">
-                        <el-input v-model="ruleForm2.pass" autocomplete="off"></el-input>
+                        <el-input v-model="ruleForm2.mail" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="password" prop="pass">
                         <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="comfirm password" prop="checkPass">
                         <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="age" prop="age">
-                        <el-input v-model.number="ruleForm2.age"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
@@ -30,22 +27,6 @@
 <script>
     export default {
         data() {
-            var checkAge = (rule, value, callback) => {
-                if (!value) {
-                    return callback(new Error('年龄不能为空'));
-                }
-                setTimeout(() => {
-                    if (!Number.isInteger(value)) {
-                        callback(new Error('请输入数字值'));
-                    } else {
-                        if (value < 18) {
-                            callback(new Error('必须年满18岁'));
-                        } else {
-                            callback();
-                        }
-                    }
-                }, 1000);
-            };
             var validatePass = (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请输入密码'));
@@ -67,9 +48,10 @@
             };
             return {
                 ruleForm2: {
+                    name: '',
+                    mail: '',
                     pass: '',
-                    checkPass: '',
-                    age: ''
+                    checkPass: ''
                 },
                 rules2: {
                     pass: [
@@ -77,9 +59,6 @@
                     ],
                     checkPass: [
                         { validator: validatePass2, trigger: 'blur' }
-                    ],
-                    age: [
-                        { validator: checkAge, trigger: 'blur' }
                     ]
                 }
             };
