@@ -96613,39 +96613,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        var validateMail = function validateMail(rule, value, callback) {
-            if (!value) {
-                return callback(new Error('Empty email address'));
-            }
-            setTimeout(function () {
-                var reg = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+/);
-                if (!reg.test(value)) {
-                    callback(new Error('Invalidate mail format'));
-                } else {
-                    callback();
-                }
-            }, 1000);
-        };
-        var validatePass = function validatePass(rule, value, callback) {
-            if (value === '') {
-                callback(new Error('Please input password'));
-            } else {
-                callback();
-            }
-        };
-        return {
-            ruleForm: {
-                mail: '',
-                password: ''
-            },
-            rules: {
-                mail: [{ validator: validateMail, trigger: 'blur' }],
-                password: [{ validator: validatePass, trigger: 'blur' }]
-            }
-        };
+        return {};
     },
 
     methods: {
@@ -96702,92 +96678,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-4 offset-md-4 my-10" },
-        [
-          _c(
-            "el-form",
-            {
-              ref: "ruleForm",
-              attrs: {
-                model: _vm.ruleForm,
-                "status-icon": "",
-                rules: _vm.rules,
-                "label-width": "100px"
-              }
-            },
-            [
-              _c(
-                "el-form-item",
-                { attrs: { label: "e-mail", prop: "mail" } },
-                [
-                  _c("el-input", {
-                    attrs: { placeholder: "e-mail", autocomplete: "off" },
-                    model: {
-                      value: _vm.ruleForm.mail,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ruleForm, "mail", $$v)
-                      },
-                      expression: "ruleForm.mail"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                { attrs: { label: "password", prop: "password" } },
-                [
-                  _c("el-input", {
-                    attrs: {
-                      type: "password",
-                      placeholder: "password",
-                      autocomplete: "off"
-                    },
-                    model: {
-                      value: _vm.ruleForm.password,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ruleForm, "password", $$v)
-                      },
-                      expression: "ruleForm.password"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                [
-                  _c(
-                    "el-button",
-                    {
-                      attrs: { type: "primary" },
-                      on: {
-                        click: function($event) {
-                          _vm.submitForm("ruleForm")
-                        }
-                      }
-                    },
-                    [_vm._v("submit")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ])
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-4 offset-md-4" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("form", { staticClass: "form-signin" }, [
+              _c("h1", { staticClass: "h3 mb-3 font-weight-normal" }, [
+                _vm._v("Please sign in")
+              ]),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "sr-only", attrs: { for: "inputEmail" } },
+                [_vm._v("Email address")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "email",
+                  id: "inputEmail",
+                  placeholder: "Email address",
+                  required: "",
+                  autofocus: ""
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                { staticClass: "sr-only", attrs: { for: "inputPassword" } },
+                [_vm._v("Password")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "password",
+                  id: "inputPassword",
+                  placeholder: "Password",
+                  required: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "checkbox mb-3" }, [
+                _c("label", [
+                  _c("input", {
+                    attrs: { type: "checkbox", value: "remember-me" }
+                  }),
+                  _vm._v(" Remember me\n                        ")
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-primary btn-block",
+                  attrs: { type: "submit" }
+                },
+                [_vm._v("Sign in")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -96876,40 +96839,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         var _this = this;
 
         var validatePass = function validatePass(rule, value, callback) {
-            if (value === '') {
-                callback(new Error('请输入密码'));
+            if (value === "") {
+                callback(new Error("请输入密码"));
             } else {
-                if (_this.ruleForm2.checkPass !== '') {
-                    _this.$refs.ruleForm2.validateField('checkPass');
+                if (_this.ruleForm2.checkPass !== "") {
+                    _this.$refs.ruleForm2.validateField("checkPass");
                 }
                 callback();
             }
         };
         var validatePass2 = function validatePass2(rule, value, callback) {
-            if (value === '') {
-                callback(new Error('请再次输入密码'));
+            if (value === "") {
+                callback(new Error("请再次输入密码"));
             } else if (value !== _this.ruleForm2.pass) {
-                callback(new Error('两次输入密码不一致!'));
+                callback(new Error("两次输入密码不一致!"));
             } else {
                 callback();
             }
         };
         return {
             ruleForm2: {
-                name: '',
-                mail: '',
-                pass: '',
-                checkPass: ''
+                name: "",
+                mail: "",
+                pass: "",
+                checkPass: ""
             },
             rules2: {
-                pass: [{ validator: validatePass, trigger: 'blur' }],
-                checkPass: [{ validator: validatePass2, trigger: 'blur' }]
+                pass: [{ validator: validatePass, trigger: "blur" }],
+                checkPass: [{ validator: validatePass2, trigger: "blur" }]
             }
         };
     },
@@ -96918,9 +96882,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitForm: function submitForm(formName) {
             this.$refs[formName].validate(function (valid) {
                 if (valid) {
-                    alert('submit!');
+                    alert("submit!");
                 } else {
-                    console.log('error submit!!');
+                    console.log("error submit!!");
                     return false;
                 }
             });
@@ -96939,136 +96903,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-4 offset-md-4" },
-        [
-          _c(
-            "el-form",
-            {
-              ref: "ruleForm2",
-              attrs: {
-                model: _vm.ruleForm2,
-                "status-icon": "",
-                rules: _vm.rules2,
-                "label-width": "100px"
-              }
-            },
-            [
-              _c(
-                "el-form-item",
-                { attrs: { label: "User Name", prop: "name" } },
-                [
-                  _c("el-input", {
-                    attrs: { autocomplete: "off" },
-                    model: {
-                      value: _vm.ruleForm2.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ruleForm2, "name", $$v)
-                      },
-                      expression: "ruleForm2.name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                { attrs: { label: "E-mail", prop: "mail" } },
-                [
-                  _c("el-input", {
-                    attrs: { autocomplete: "off" },
-                    model: {
-                      value: _vm.ruleForm2.mail,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ruleForm2, "mail", $$v)
-                      },
-                      expression: "ruleForm2.mail"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                { attrs: { label: "password", prop: "pass" } },
-                [
-                  _c("el-input", {
-                    attrs: { type: "password", autocomplete: "off" },
-                    model: {
-                      value: _vm.ruleForm2.pass,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ruleForm2, "pass", $$v)
-                      },
-                      expression: "ruleForm2.pass"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                { attrs: { label: "comfirm password", prop: "checkPass" } },
-                [
-                  _c("el-input", {
-                    attrs: { type: "password", autocomplete: "off" },
-                    model: {
-                      value: _vm.ruleForm2.checkPass,
-                      callback: function($$v) {
-                        _vm.$set(_vm.ruleForm2, "checkPass", $$v)
-                      },
-                      expression: "ruleForm2.checkPass"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-form-item",
-                [
-                  _c(
-                    "el-button",
-                    {
-                      attrs: { type: "primary" },
-                      on: {
-                        click: function($event) {
-                          _vm.submitForm("ruleForm2")
-                        }
-                      }
-                    },
-                    [_vm._v("提交")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.resetForm("ruleForm2")
-                        }
-                      }
-                    },
-                    [_vm._v("重置")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ])
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+          _c("form", [
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label",
+                  attrs: { for: "inputEmail" }
+                },
+                [_vm._v("Email")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    id: "inputEmail",
+                    placeholder: "Email"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label",
+                  attrs: { for: "inputPassword" }
+                },
+                [_vm._v("Password")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    id: "inputPassword",
+                    placeholder: "Password"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Sign up")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

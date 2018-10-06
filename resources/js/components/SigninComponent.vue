@@ -1,18 +1,23 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 my-10">
-                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px">
-                    <el-form-item label="e-mail" prop="mail">
-                        <el-input placeholder="e-mail" v-model="ruleForm.mail" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="password" prop="password">
-                        <el-input type="password" placeholder="password" v-model="ruleForm.password" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">submit</el-button>
-                    </el-form-item>
-                </el-form>
+            <div class="col-md-4 offset-md-4">
+                <div class="text-center">
+                    <form class="form-signin">
+                        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required
+                            autofocus>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -20,39 +25,7 @@
 <script>
     export default {
         data() {
-            var validateMail = (rule, value, callback) => {
-                if (!value) {
-                    return callback(new Error('Empty email address'));
-                }
-                setTimeout(() => {
-                    var reg = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+/);
-                    if (!reg.test(value)) {
-                        callback(new Error('Invalidate mail format'));
-                    } else {
-                        callback();
-                    }
-                }, 1000);
-            };
-            var validatePass = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('Please input password'));
-                } else {
-                    callback();
-                }
-            };
             return {
-                ruleForm: {
-                    mail: '',
-                    password: '',
-                },
-                rules: {
-                    mail: [
-                        { validator: validateMail, trigger: 'blur' }
-                    ],
-                    password: [
-                        { validator: validatePass, trigger: 'blur' }
-                    ]
-                }
             };
         },
         methods: {

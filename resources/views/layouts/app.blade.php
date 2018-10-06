@@ -14,38 +14,6 @@
 
     <!-- Styles -->
     <style>
-        .el-header {
-            padding: 20px 0;
-        }
-
-        .el-footer {
-            padding: 20px 0;
-            text-align: center;
-            line-height: 23px;
-        }
-
-        .el-aside {
-            text-align: center;
-            line-height: 23px;
-        }
-
-        .el-main {
-            text-align: center;
-            line-height: 23px;
-        }
-
-        body>.el-container {
-            margin-bottom: 10px;
-        }
-
-        .el-container:nth-child(5) .el-aside,
-        .el-container:nth-child(6) .el-aside {
-            line-height: 23px;
-        }
-
-        .el-container:nth-child(7) .el-aside {
-            line-height: 23px;
-        }
     </style>
 
     @yield('css_style')

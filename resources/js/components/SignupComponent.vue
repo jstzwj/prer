@@ -1,25 +1,26 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px">
-                    <el-form-item label="User Name" prop="name">
-                        <el-input v-model="ruleForm2.name" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="E-mail" prop="mail">
-                        <el-input v-model="ruleForm2.mail" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="password" prop="pass">
-                        <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item label="comfirm password" prop="checkPass">
-                        <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-                        <el-button @click="resetForm('ruleForm2')">重置</el-button>
-                    </el-form-item>
-                </el-form>
+            <div class="col-md-6 offset-md-3">
+                <form>
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Sign up</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -28,48 +29,44 @@
     export default {
         data() {
             var validatePass = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('请输入密码'));
+                if (value === "") {
+                    callback(new Error("请输入密码"));
                 } else {
-                    if (this.ruleForm2.checkPass !== '') {
-                        this.$refs.ruleForm2.validateField('checkPass');
+                    if (this.ruleForm2.checkPass !== "") {
+                        this.$refs.ruleForm2.validateField("checkPass");
                     }
                     callback();
                 }
             };
             var validatePass2 = (rule, value, callback) => {
-                if (value === '') {
-                    callback(new Error('请再次输入密码'));
+                if (value === "") {
+                    callback(new Error("请再次输入密码"));
                 } else if (value !== this.ruleForm2.pass) {
-                    callback(new Error('两次输入密码不一致!'));
+                    callback(new Error("两次输入密码不一致!"));
                 } else {
                     callback();
                 }
             };
             return {
                 ruleForm2: {
-                    name: '',
-                    mail: '',
-                    pass: '',
-                    checkPass: ''
+                    name: "",
+                    mail: "",
+                    pass: "",
+                    checkPass: ""
                 },
                 rules2: {
-                    pass: [
-                        { validator: validatePass, trigger: 'blur' }
-                    ],
-                    checkPass: [
-                        { validator: validatePass2, trigger: 'blur' }
-                    ]
+                    pass: [{ validator: validatePass, trigger: "blur" }],
+                    checkPass: [{ validator: validatePass2, trigger: "blur" }]
                 }
             };
         },
         methods: {
             submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
+                this.$refs[formName].validate(valid => {
                     if (valid) {
-                        alert('submit!');
+                        alert("submit!");
                     } else {
-                        console.log('error submit!!');
+                        console.log("error submit!!");
                         return false;
                     }
                 });
@@ -78,5 +75,5 @@
                 this.$refs[formName].resetFields();
             }
         }
-    }
+    };
 </script>
