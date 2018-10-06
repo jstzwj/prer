@@ -29549,6 +29549,8 @@ Vue.component('sidebar-component', __webpack_require__(208));
 Vue.component('navbar-component', __webpack_require__(214));
 Vue.component('footer-component', __webpack_require__(226));
 Vue.component('playlist-component', __webpack_require__(219));
+Vue.component('signin-component', __webpack_require__(237));
+Vue.component('signup-component', __webpack_require__(234));
 
 var app = new Vue({
   el: '#app'
@@ -96509,6 +96511,541 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-abfbddf2", module.exports)
+  }
+}
+
+/***/ }),
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(26)
+/* script */
+var __vue_script__ = __webpack_require__(235)
+/* template */
+var __vue_template__ = __webpack_require__(236)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/SignupComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e902aeac", Component.options)
+  } else {
+    hotAPI.reload("data-v-e902aeac", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 235 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        var _this = this;
+
+        var checkAge = function checkAge(rule, value, callback) {
+            if (!value) {
+                return callback(new Error('年龄不能为空'));
+            }
+            setTimeout(function () {
+                if (!Number.isInteger(value)) {
+                    callback(new Error('请输入数字值'));
+                } else {
+                    if (value < 18) {
+                        callback(new Error('必须年满18岁'));
+                    } else {
+                        callback();
+                    }
+                }
+            }, 1000);
+        };
+        var validatePass = function validatePass(rule, value, callback) {
+            if (value === '') {
+                callback(new Error('请输入密码'));
+            } else {
+                if (_this.ruleForm2.checkPass !== '') {
+                    _this.$refs.ruleForm2.validateField('checkPass');
+                }
+                callback();
+            }
+        };
+        var validatePass2 = function validatePass2(rule, value, callback) {
+            if (value === '') {
+                callback(new Error('请再次输入密码'));
+            } else if (value !== _this.ruleForm2.pass) {
+                callback(new Error('两次输入密码不一致!'));
+            } else {
+                callback();
+            }
+        };
+        return {
+            ruleForm2: {
+                pass: '',
+                checkPass: '',
+                age: ''
+            },
+            rules2: {
+                pass: [{ validator: validatePass, trigger: 'blur' }],
+                checkPass: [{ validator: validatePass2, trigger: 'blur' }],
+                age: [{ validator: checkAge, trigger: 'blur' }]
+            }
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm(formName) {
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    alert('submit!');
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        resetForm: function resetForm(formName) {
+            this.$refs[formName].resetFields();
+        }
+    }
+});
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-4 offset-md-4" },
+        [
+          _c(
+            "el-form",
+            {
+              ref: "ruleForm2",
+              attrs: {
+                model: _vm.ruleForm2,
+                "status-icon": "",
+                rules: _vm.rules2,
+                "label-width": "100px"
+              }
+            },
+            [
+              _c(
+                "el-form-item",
+                { attrs: { label: "User Name", prop: "name" } },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.ruleForm2.pass,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm2, "pass", $$v)
+                      },
+                      expression: "ruleForm2.pass"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                { attrs: { label: "E-mail", prop: "mail" } },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.ruleForm2.pass,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm2, "pass", $$v)
+                      },
+                      expression: "ruleForm2.pass"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                { attrs: { label: "password", prop: "pass" } },
+                [
+                  _c("el-input", {
+                    attrs: { type: "password", autocomplete: "off" },
+                    model: {
+                      value: _vm.ruleForm2.pass,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm2, "pass", $$v)
+                      },
+                      expression: "ruleForm2.pass"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                { attrs: { label: "comfirm password", prop: "checkPass" } },
+                [
+                  _c("el-input", {
+                    attrs: { type: "password", autocomplete: "off" },
+                    model: {
+                      value: _vm.ruleForm2.checkPass,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm2, "checkPass", $$v)
+                      },
+                      expression: "ruleForm2.checkPass"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                { attrs: { label: "age", prop: "age" } },
+                [
+                  _c("el-input", {
+                    model: {
+                      value: _vm.ruleForm2.age,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm2, "age", _vm._n($$v))
+                      },
+                      expression: "ruleForm2.age"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                [
+                  _c(
+                    "el-button",
+                    {
+                      attrs: { type: "primary" },
+                      on: {
+                        click: function($event) {
+                          _vm.submitForm("ruleForm2")
+                        }
+                      }
+                    },
+                    [_vm._v("提交")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-button",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.resetForm("ruleForm2")
+                        }
+                      }
+                    },
+                    [_vm._v("重置")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e902aeac", module.exports)
+  }
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(26)
+/* script */
+var __vue_script__ = __webpack_require__(238)
+/* template */
+var __vue_template__ = __webpack_require__(239)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/SigninComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dd0bcb40", Component.options)
+  } else {
+    hotAPI.reload("data-v-dd0bcb40", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 238 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        var validateMail = function validateMail(rule, value, callback) {
+            var reg = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+/);
+            if (!reg.test(value)) {
+                callback(new Error('Invalidate mail format'));
+            } else {
+                callback();
+            }
+        };
+        var validatePass = function validatePass(rule, value, callback) {
+            if (value === '') {
+                callback(new Error('Please input password'));
+            } else {
+                callback();
+            }
+        };
+        return {
+            ruleForm: {
+                mail: '',
+                pass: ''
+            },
+            rules: {
+                mail: [{ validator: validateMail, trigger: 'blur' }],
+                pass: [{ validator: validatePass, trigger: 'blur' }]
+            }
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm(formName) {
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    alert('submit!');
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-4 offset-md-4 my-10" },
+        [
+          _c(
+            "el-form",
+            {
+              ref: "ruleForm",
+              attrs: {
+                model: _vm.ruleForm,
+                "status-icon": "",
+                rules: _vm.rules,
+                "label-width": "100px"
+              }
+            },
+            [
+              _c(
+                "el-form-item",
+                { attrs: { label: "e-mail", prop: "mail" } },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.ruleForm.mail,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm, "mail", $$v)
+                      },
+                      expression: "ruleForm.mail"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                { attrs: { label: "password", prop: "pass" } },
+                [
+                  _c("el-input", {
+                    attrs: { type: "password", autocomplete: "off" },
+                    model: {
+                      value: _vm.ruleForm.pass,
+                      callback: function($$v) {
+                        _vm.$set(_vm.ruleForm, "pass", $$v)
+                      },
+                      expression: "ruleForm.pass"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                [
+                  _c(
+                    "el-button",
+                    {
+                      attrs: { type: "primary" },
+                      on: {
+                        click: function($event) {
+                          _vm.submitForm("ruleForm")
+                        }
+                      }
+                    },
+                    [_vm._v("submit")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dd0bcb40", module.exports)
   }
 }
 

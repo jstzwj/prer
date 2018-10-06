@@ -30,7 +30,8 @@ Vue.component('sidebar-component', require('./components/SidebarComponent.vue'))
 Vue.component('navbar-component', require('./components/NavbarComponent.vue'));
 Vue.component('footer-component', require('./components/FooterComponent.vue'));
 Vue.component('playlist-component', require('./components/PlaylistComponent.vue'));
-
+Vue.component('signin-component', require('./components/SigninComponent.vue'));
+Vue.component('signup-component', require('./components/SignupComponent.vue'));
 
 const app = new Vue({
     el: '#app'
