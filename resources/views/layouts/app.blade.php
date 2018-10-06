@@ -27,23 +27,6 @@
 
 <body>
     <div id="app">
-        <el-container>
-            <el-header>
-                @section('header')
-                <navbar-component></navbar-component>
-                @show
-            </el-header>
-            <el-main>
-                @section('main')
-                @show
-            </el-main>
-            <el-footer>
-                @section('footer')    
-                <footer-component></footer-component>
-                @show
-            </el-footer>
-        </el-container>
-
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>

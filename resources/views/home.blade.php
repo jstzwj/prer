@@ -1,28 +1,32 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 
-@section('title', 'Prer')
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('header')
-@parent
-@endsection
+    <title>Prer</title>
 
-@section('main')
-<el-row :gutter="10">
-    <el-col :xs="8" :sm="8" :md="8" :lg="8" :xl="8">
-        <div>123</div>
-    </el-col>
-    <el-col :xs="16" :sm="16" :md="16" :lg="16" :xl="16">
-        <div>12</div>
-    </el-col>
-    <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-        <div>1</div>
-    </el-col>
-</el-row>
-@endsection
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
-@section('footer')
-@parent
-@endsection
+    <!-- Styles -->
+    <style>
+    </style>
 
-@section('js_script')
-@endsection
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
+</body>
+
+</html>

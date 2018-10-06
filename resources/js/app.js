@@ -9,9 +9,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+import VueRouter from 'vue-router';
+
+// import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+// Vue.use(ElementUI);
 
 import 'jquery/dist/jquery.min.js'
 
@@ -34,6 +36,7 @@ $.ajaxSetup({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import Home from './pages/Home.vue'
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('sidebar-component', require('./components/SidebarComponent.vue'));
 Vue.component('navbar-component', require('./components/NavbarComponent.vue'));
@@ -41,7 +44,18 @@ Vue.component('footer-component', require('./components/FooterComponent.vue'));
 Vue.component('playlist-component', require('./components/PlaylistComponent.vue'));
 Vue.component('signin-component', require('./components/SigninComponent.vue'));
 Vue.component('signup-component', require('./components/SignupComponent.vue'));
+/*
+const routes = [
+    { path: '/foo', component: Foo },
+    { path: '/bar', component: Bar }
+]
+
+const router = new VueRouter({
+    routes
+})
+*/
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    render: h=>h(Home)
 });
