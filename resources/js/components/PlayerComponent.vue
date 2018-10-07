@@ -28,6 +28,7 @@ export default {
         player: null
         };
     },
+    props: ['url', 'pic'],
     mounted() {
         this.player = this.$refs.player.dp;
     },

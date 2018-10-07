@@ -60,6 +60,7 @@ import Home from './pages/Home.vue'
 import Signin from './pages/Signin.vue'
 import Signup from './pages/Signup.vue'
 import Watch from './pages/Watch.vue'
+import Upload from './pages/Upload.vue'
 import Code404 from './pages/Code404.vue'
 
 
@@ -68,7 +69,8 @@ const routes = [
     { path: '/', component: Home },
     { path: '/signin', component: Signin },
     { path: '/signup', component: Signup },
-    { path: '/watch', component: Watch },
+    { path: '/upload', component: Upload },
+    { path: '/watch/:vid', component: Watch },
     { path: '*', component: Code404 }
 ]
 

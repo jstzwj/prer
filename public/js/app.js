@@ -14935,8 +14935,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_Signup_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__pages_Signup_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_Code404_vue__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_Code404_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__pages_Code404_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_Upload_vue__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_Upload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__pages_Upload_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_Code404_vue__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_Code404_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__pages_Code404_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -15000,8 +15002,9 @@ Vue.component('main-layout', __webpack_require__(5));
 
 
 
+
 // router
-var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_10__pages_Home_vue___default.a }, { path: '/signin', component: __WEBPACK_IMPORTED_MODULE_11__pages_Signin_vue___default.a }, { path: '/signup', component: __WEBPACK_IMPORTED_MODULE_12__pages_Signup_vue___default.a }, { path: '/watch', component: __WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue___default.a }, { path: '*', component: __WEBPACK_IMPORTED_MODULE_14__pages_Code404_vue___default.a }];
+var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_10__pages_Home_vue___default.a }, { path: '/signin', component: __WEBPACK_IMPORTED_MODULE_11__pages_Signin_vue___default.a }, { path: '/signup', component: __WEBPACK_IMPORTED_MODULE_12__pages_Signup_vue___default.a }, { path: '/upload', component: __WEBPACK_IMPORTED_MODULE_14__pages_Upload_vue___default.a }, { path: '/watch/:vid', component: __WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue___default.a }, { path: '*', component: __WEBPACK_IMPORTED_MODULE_15__pages_Code404_vue___default.a }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
@@ -51885,11 +51888,18 @@ var render = function() {
               [
                 _vm._m(2),
                 _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "dropdown-item", attrs: { to: "/upload" } },
+                  [
+                    _c("i", { staticClass: "fa fa-upload" }),
+                    _vm._v("\n        Upload\n      ")
+                  ]
+                ),
+                _vm._v(" "),
                 _vm._m(3),
                 _vm._v(" "),
                 _vm._m(4),
-                _vm._v(" "),
-                _vm._m(5),
                 _vm._v(" "),
                 _c(
                   "a",
@@ -51907,7 +51917,8 @@ var render = function() {
                     _vm._v("\n        Sign out\n      ")
                   ]
                 )
-              ]
+              ],
+              1
             )
           ]
     ],
@@ -51949,15 +51960,6 @@ var staticRenderFns = [
     return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
       _c("i", { staticClass: "fa fa-info" }),
       _vm._v("\n        Your Profile\n      ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-      _c("i", { staticClass: "fa fa-upload" }),
-      _vm._v("\n        Upload\n      ")
     ])
   },
   function() {
@@ -52878,15 +52880,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            videos: [{ thumbnail: 'https://cn.vuejs.org/images/logo.png', title: '123', text: '1234' }]
+            videos: []
         };
     },
 
+    mounted: function mounted() {
+        var that = this;
+        axios({
+            method: "get",
+            url: "/list",
+            data: {}
+        }).then(function (response) {
+            console.log(response);
+            Vue.set(that, 'videos', response.data);
+            console.log(videos_retval);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    },
     components: {
         "main-layout": __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue___default.a
     }
@@ -52905,34 +52923,43 @@ var render = function() {
       "div",
       { staticClass: "d-flex flex-wrap" },
       _vm._l(_vm.videos, function(item, index) {
-        return _c("div", { key: index, staticClass: "card" }, [
-          _c(
-            "div",
-            {
-              staticStyle: {
-                width: "286px",
-                height: "160px",
-                overflow: "hidden",
-                position: "relative"
-              }
-            },
-            [
-              _c("img", {
-                staticClass: "card-img-top",
-                staticStyle: { width: "286px" },
-                attrs: { src: item.thumbnail, alt: "Thumbnail" }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v(_vm._s(item.title))
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(item.text))])
-          ])
-        ])
+        return _c(
+          "div",
+          { key: index, staticClass: "card" },
+          [
+            _c("router-link", { attrs: { to: item.watch_url } }, [
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    width: "286px",
+                    height: "160px",
+                    overflow: "hidden",
+                    position: "relative"
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    staticStyle: { width: "286px" },
+                    attrs: { src: item.thumbnail, alt: "Thumbnail" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(item.title))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(item.description))
+                ])
+              ])
+            ])
+          ],
+          1
+        )
       })
     )
   ])
@@ -101634,6 +101661,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             player: null
         };
     },
+
+    props: ['url', 'pic'],
     mounted: function mounted() {
         this.player = this.$refs.player.dp;
     },
@@ -101844,6 +101873,266 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-ddaae4d4", module.exports)
+  }
+}
+
+/***/ }),
+/* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(268)
+/* template */
+var __vue_template__ = __webpack_require__(269)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/pages/Upload.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e3830f6c", Component.options)
+  } else {
+    hotAPI.reload("data-v-e3830f6c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 268 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            form: {
+                title: '',
+                description: ''
+            },
+            fileList: []
+        };
+    },
+
+    methods: {
+        handleRemove: function handleRemove(file, fileList) {
+            console.log(file, fileList);
+        },
+        handlePreview: function handlePreview(file) {
+            console.log(file);
+        },
+        handleExceed: function handleExceed(files, fileList) {
+            this.$message.warning("\u5F53\u524D\u9650\u5236\u9009\u62E9 5 \u4E2A\u6587\u4EF6\uFF0C\u672C\u6B21\u9009\u62E9\u4E86 " + files.length + " \u4E2A\u6587\u4EF6\uFF0C\u5171\u9009\u62E9\u4E86 " + (files.length + fileList.length) + " \u4E2A\u6587\u4EF6");
+        },
+        beforeRemove: function beforeRemove(file, fileList) {
+            return this.$confirm("\u786E\u5B9A\u79FB\u9664 " + file.name + "\uFF1F");
+        },
+        onSubmit: function onSubmit() {
+            console.log('submit!');
+        }
+    },
+    components: {
+        "signin-component": __WEBPACK_IMPORTED_MODULE_1__components_SigninComponent_vue___default.a
+    }
+});
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main-layout", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-md-4 offset-md-4" },
+          [
+            _c(
+              "el-form",
+              {
+                ref: "form",
+                attrs: { model: _vm.form, "label-width": "80px" }
+              },
+              [
+                _c(
+                  "el-form-item",
+                  { attrs: { label: "title" } },
+                  [
+                    _c("el-input", {
+                      model: {
+                        value: _vm.form.title,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "title", $$v)
+                        },
+                        expression: "form.title"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-form-item",
+                  { attrs: { label: "description" } },
+                  [
+                    _c("el-input", {
+                      attrs: {
+                        type: "textarea",
+                        rows: 2,
+                        placeholder: "video desciption"
+                      },
+                      model: {
+                        value: _vm.form.description,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "description", $$v)
+                        },
+                        expression: "form.description"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-form-item",
+                  { attrs: { label: "upload" } },
+                  [
+                    _c(
+                      "el-upload",
+                      {
+                        staticClass: "upload-demo",
+                        attrs: {
+                          action: "/upload",
+                          "on-preview": _vm.handlePreview,
+                          "on-remove": _vm.handleRemove,
+                          "before-remove": _vm.beforeRemove,
+                          multiple: "",
+                          limit: 5,
+                          "on-exceed": _vm.handleExceed,
+                          "file-list": _vm.fileList
+                        }
+                      },
+                      [
+                        _c(
+                          "el-button",
+                          { attrs: { size: "small", type: "primary" } },
+                          [_vm._v("点击上传")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "el-upload__tip",
+                            attrs: { slot: "tip" },
+                            slot: "tip"
+                          },
+                          [_vm._v("只能上传jpg/png文件，且不超过500kb")]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-form-item",
+                  [
+                    _c(
+                      "el-button",
+                      {
+                        attrs: { type: "primary" },
+                        on: { click: _vm.onSubmit }
+                      },
+                      [_vm._v("upload")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e3830f6c", module.exports)
   }
 }
 

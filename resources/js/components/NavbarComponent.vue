@@ -26,10 +26,10 @@
           <i class="fa fa-info"></i>
           Your Profile
         </a>
-        <a class="dropdown-item" href="#">
+        <router-link to="/upload" class="dropdown-item">
           <i class="fa fa-upload"></i>
           Upload
-        </a>
+        </router-link>
         <a class="dropdown-item" href="#">
           <i class="fa fa-question-circle"></i>
           Help

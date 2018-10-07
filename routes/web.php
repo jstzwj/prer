@@ -19,6 +19,8 @@ Route::post('/signin', 'UserController@signin');
 
 Route::post('/signup', 'UserController@signup');
 
+Route::get('/list', 'VideoController@homeVideoList');
+
 Route::get('{path}', function () {
     return view('home');
 });
