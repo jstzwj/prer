@@ -37,6 +37,8 @@
         methods: {
             submitForm(formName) {
                 var notify_method = this.$notify;
+                var router_method = this.$router;
+                var store_method = this.$store;
                 var mail_val = this.$data.formData.mail;
                 var password_val = this.$data.formData.password;
                 //this.$refs[formName].validate((valid) => {
@@ -45,12 +47,13 @@
                     axios({
                         method: "post",
                         url: "/signin",
-                        data: { mail: mail_val, password: password_val }
+                        data: { token: 0, mail: mail_val, password: password_val }
                     })
                     .then(function (response) {
                         console.log(response);
                         if (response.data.status == "1") {
-                            window.location.href = "/";
+                            store_method.state.token = response.data.token;
+                            router_method.push({path:'/'});
                         } else if (response.data.status == "0") {
                             notify_method({
                                 title: "warning",
@@ -63,7 +66,7 @@
                         console.log(error);
                         notify_method({
                             title: "Error",
-                            message: "error: " + error.data.code,
+                            message: "error: Unknown error.",
                             type: "error"
                         });
                     });

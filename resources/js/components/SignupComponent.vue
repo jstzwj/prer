@@ -38,6 +38,7 @@
         methods: {
             submitForm(formName) {
                 var notify_method = this.$notify;
+                var router_method = this.$router;
                 var mail_val = this.$data.formData.mail;
                 var password_val = this.$data.formData.password;
                 var valid = true;
@@ -45,7 +46,7 @@
                     axios({
                         method: "post",
                         url: "/signup",
-                        data: { mail: mail_val, password: password_val }
+                        data: { token: 0, mail: mail_val, password: password_val }
                     })
                     .then(function (response) {
                         console.log(response);

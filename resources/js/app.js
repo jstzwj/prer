@@ -12,6 +12,11 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import axios from 'axios';
+
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
@@ -54,11 +59,15 @@ Vue.component('main-layout', require('./layouts/MainLayout.vue'));
 import Home from './pages/Home.vue'
 import Signin from './pages/Signin.vue'
 import Signup from './pages/Signup.vue'
+import Code404 from './pages/Code404.vue'
 
+
+// router
 const routes = [
     { path: '/', component: Home },
     { path: '/signin', component: Signin },
-    { path: '/signup', component: Signup }
+    { path: '/signup', component: Signup },
+    { path: '*', component: Code404 }
 ]
 
 const router = new VueRouter({
@@ -66,9 +75,22 @@ const router = new VueRouter({
     routes: routes
 })
 
+// states
+const store = new Vuex.Store({
+    state: {
+      token: 0
+    },
+    mutations: {
+      set_token (state, new_token) {
+        state.token = new_token;
+      }
+    }
+});
+
 
 const app = new Vue({
     el: '#app',
+    store: store,
     router: router,
     render: h=>h(App)
 });
