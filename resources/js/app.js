@@ -59,6 +59,7 @@ Vue.component('main-layout', require('./layouts/MainLayout.vue'));
 import Home from './pages/Home.vue'
 import Signin from './pages/Signin.vue'
 import Signup from './pages/Signup.vue'
+import Watch from './pages/Watch.vue'
 import Code404 from './pages/Code404.vue'
 
 
@@ -67,6 +68,7 @@ const routes = [
     { path: '/', component: Home },
     { path: '/signin', component: Signin },
     { path: '/signup', component: Signup },
+    { path: '/watch', component: Watch },
     { path: '*', component: Code404 }
 ]
 
@@ -78,12 +80,23 @@ const router = new VueRouter({
 // states
 const store = new Vuex.Store({
     state: {
-      token: 0
+      userName: '',
+      userMail: '',
+      isSignin: false
     },
     mutations: {
-      set_token (state, new_token) {
-        state.token = new_token;
-      }
+        setUserName (state, name) {
+            state.userName = name;
+        },
+        setUserMail (state, mail) {
+            state.userMail = mail;
+        },
+        setSignin(state){
+            state.isSignin = true;
+        },
+        setSignout(state){
+            state.isSignin = false;
+        }
     }
 });
 

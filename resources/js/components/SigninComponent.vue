@@ -47,12 +47,13 @@
                     axios({
                         method: "post",
                         url: "/signin",
-                        data: { token: 0, mail: mail_val, password: password_val }
+                        data: { mail: mail_val, password: password_val }
                     })
                     .then(function (response) {
                         console.log(response);
                         if (response.data.status == "1") {
-                            store_method.state.token = response.data.token;
+                            store_method.commit('setUserMail', mail_val);
+                            store_method.commit('setSignin');
                             router_method.push({path:'/'});
                         } else if (response.data.status == "0") {
                             notify_method({
