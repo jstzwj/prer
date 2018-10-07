@@ -101585,7 +101585,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             player_url: '',
             player_pic: '',
-            parts: [{ title: '123', url: 'http://static.smartisanos.cn/common/video/t1-ui.mp4', pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg' }]
+            parts: [{ title: '1part',
+                url: 'http://static.smartisanos.cn/common/video/t1-ui.mp4',
+                pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg' }, { title: '2part',
+                url: 'http://192.168.162.2/static.smartisanos.cn/os/assets/videos/bigbang@2x.16541ee68979473a10401ca54cd2c1d7.mp4',
+                pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg' }]
         };
     },
     mounted: function mounted() {
