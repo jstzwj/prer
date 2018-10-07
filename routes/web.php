@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::post('/signin', 'UserController@signin');
 
+Route::post('/signup', 'UserController@signup');
+
 Route::get('{path}', function () {
     return view('home');
 });

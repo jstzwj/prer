@@ -22,11 +22,32 @@ class UserController extends Controller
     public function signin(Request $request)
     {
         $mail = $request->mail;
-        $password = $request->password;
+        $password = md5($request->password);
         $is_exists = DB::table('users')
             ->where('email', $mail)
-            ->orWhere('password', $password)
+            ->where('password', $password)
             ->exists();
         return json_encode(['status' => ($is_exists? 1 : 0)]);
+    }
+
+    public function signup(Request $request)
+    {
+        $mail = $request->mail;
+        $password = md5($request->password);
+        $is_exists = DB::table('users')
+            ->where('email', $mail)
+            ->exists();
+
+        if($is_exists)
+        {
+            return json_encode(['status' => 0]);
+        }
+        else
+        {
+            $id = DB::table('users')->insertGetId(
+                ['name' => $mail, 'email' => $mail, 'password' => $password]
+            );
+            return json_encode(['status' => 1]);
+        }
     }
 }

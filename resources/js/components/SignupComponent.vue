@@ -6,18 +6,18 @@
                     <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" v-model="formData.mail">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" v-model="formData.password">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button type="button" class="btn btn-primary">Sign up</button>
+                            <button type="button" class="btn btn-primary" @click="submitForm('formData')">Sign up</button>
                         </div>
                     </div>
                 </form>
@@ -28,51 +28,53 @@
 <script>
     export default {
         data() {
-            var validatePass = (rule, value, callback) => {
-                if (value === "") {
-                    callback(new Error("请输入密码"));
-                } else {
-                    if (this.ruleForm2.checkPass !== "") {
-                        this.$refs.ruleForm2.validateField("checkPass");
-                    }
-                    callback();
-                }
-            };
-            var validatePass2 = (rule, value, callback) => {
-                if (value === "") {
-                    callback(new Error("请再次输入密码"));
-                } else if (value !== this.ruleForm2.pass) {
-                    callback(new Error("两次输入密码不一致!"));
-                } else {
-                    callback();
-                }
-            };
             return {
-                ruleForm2: {
-                    name: "",
+                formData: {
                     mail: "",
-                    pass: "",
-                    checkPass: ""
-                },
-                rules2: {
-                    pass: [{ validator: validatePass, trigger: "blur" }],
-                    checkPass: [{ validator: validatePass2, trigger: "blur" }]
+                    pass: ""
                 }
             };
         },
         methods: {
             submitForm(formName) {
-                this.$refs[formName].validate(valid => {
-                    if (valid) {
-                        alert("submit!");
-                    } else {
-                        console.log("error submit!!");
-                        return false;
-                    }
-                });
-            },
-            resetForm(formName) {
-                this.$refs[formName].resetFields();
+                var notify_method = this.$notify;
+                var mail_val = this.$data.formData.mail;
+                var password_val = this.$data.formData.password;
+                var valid = true;
+                if (valid) {
+                    axios({
+                        method: "post",
+                        url: "/signup",
+                        data: { mail: mail_val, password: password_val }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                        if (response.data.status == "1") {
+                            notify_method({
+                                title: "success",
+                                message: "Register successfully.",
+                                type: "success"
+                            });
+                        } else if (response.data.status == "0") {
+                            notify_method({
+                                title: "warning",
+                                message: "E-mail has been registered.",
+                                type: "warning"
+                            });
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        notify_method({
+                            title: "Error",
+                            message: "error: " + error.data.code,
+                            type: "error"
+                        });
+                    });
+                } else {
+                    console.log("error submit!!");
+                    return false;
+                }
             }
         }
     };
