@@ -101568,13 +101568,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    "player-component": __WEBPACK_IMPORTED_MODULE_1__components_PlayerComponent_vue___default.a
-  }
+    data: function data() {
+        return {
+            player_url: '',
+            player_pic: '',
+            parts: [{ title: '123', url: 'http://static.smartisanos.cn/common/video/t1-ui.mp4', pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg' }]
+        };
+    },
+    mounted: function mounted() {
+        var count = Object.keys(this.parts).length;
+        if (count > 0) {
+            Vue.set(this, 'player_url', this.parts[0].url);
+            Vue.set(this, 'player_pic', this.parts[0].pic);
+        } else {
+            console.log('Error: Negative parts number.');
+        }
+    },
+
+    methods: {
+        changePart: function changePart(index) {
+            Vue.set(this, 'player_url', this.parts[index].url);
+            Vue.set(this, 'player_pic', this.parts[index].pic);
+            console.log("Part changed.\nurl:" + this.player_url + "\npic:" + this.player_pic);
+        }
+    },
+    components: {
+        "player-component": __WEBPACK_IMPORTED_MODULE_1__components_PlayerComponent_vue___default.a
+    }
 });
 
 /***/ }),
@@ -101649,8 +101682,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             options: {
                 video: {
-                    url: "http://static.smartisanos.cn/common/video/t1-ui.mp4",
-                    pic: "http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg"
+                    url: this.url,
+                    pic: this.pic
                 },
                 autoplay: false,
                 contextmenu: [{
@@ -101671,10 +101704,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         play: function play() {
             console.log("play callback");
         },
-        switchHandle: function switchHandle() {
+        switchHandle: function switchHandle(in_url, in_pic, in_thumbnail) {
             this.player.switchVideo({
-                url: "http://static.smartisanos.cn/common/video/video-jgpro.mp4"
+                url: in_url,
+                pic: in_pic,
+                thumbnail: in_thumbnail
             });
+        }
+    },
+    watch: {
+        url: function url(val) {
+            this.player.switchVideo({
+                url: val,
+                pic: this.pic,
+                thumbnail: this.pic
+            });
+            this.player.play();
         }
     },
     components: {
@@ -101847,20 +101892,60 @@ var render = function() {
   return _c("main-layout", [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row justify-content-md-center" }, [
-        _c("div", { staticClass: "col col-lg-12" }, [_c("player-component")], 1)
+        _c(
+          "div",
+          { staticClass: "col col-lg-8" },
+          [
+            _c("player-component", {
+              attrs: { url: _vm.player_url, pic: _vm.player_pic }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-lg-4" }, [
+          _c("h5", [_vm._v("Video parts")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "list-group" },
+            _vm._l(_vm.parts, function(item, index) {
+              return _c(
+                "a",
+                {
+                  key: index,
+                  staticClass: "list-group-item list-group-item-action",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      _vm.changePart(index)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(item.title) +
+                      "\n                    "
+                  )
+                ]
+              )
+            })
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col col-lg-2" }, [
-          _vm._v("\n            1 of 3\n            ")
+          _vm._v("\n                1 of 3\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-auto" }, [
-          _vm._v("\n            Variable width content\n            ")
+          _vm._v("\n                Variable width content\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col col-lg-2" }, [
-          _vm._v("\n            3 of 3\n            ")
+          _vm._v("\n                3 of 3\n            ")
         ])
       ])
     ])

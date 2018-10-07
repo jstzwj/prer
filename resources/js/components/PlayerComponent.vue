@@ -13,9 +13,8 @@ export default {
         return {
         options: {
             video: {
-                url: "http://static.smartisanos.cn/common/video/t1-ui.mp4",
-                pic:
-                    "http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg"
+                url: this.url,
+                pic: this.pic
             },
             autoplay: false,
             contextmenu: [
@@ -36,10 +35,22 @@ export default {
         play() {
         console.log("play callback");
         },
-        switchHandle() {
-        this.player.switchVideo({
-            url: "http://static.smartisanos.cn/common/video/video-jgpro.mp4"
-        });
+        switchHandle(in_url, in_pic, in_thumbnail) {
+            this.player.switchVideo({
+                url: in_url,
+                pic: in_pic,
+                thumbnail: in_thumbnail
+            });
+        }
+    },
+    watch: {
+        url: function (val) {
+            this.player.switchVideo({
+                url: val,
+                pic: this.pic,
+                thumbnail: this.pic
+            });
+            this.player.play();
         }
     },
     components: {
