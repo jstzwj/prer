@@ -13,9 +13,9 @@ export default {
         return {
         options: {
             video: {
-            url: "http://static.smartisanos.cn/common/video/t1-ui.mp4",
-            pic:
-                "http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg"
+                url: "http://static.smartisanos.cn/common/video/t1-ui.mp4",
+                pic:
+                    "http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg"
             },
             autoplay: false,
             contextmenu: [

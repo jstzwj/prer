@@ -27,6 +27,10 @@
           Your Profile
         </a>
         <a class="dropdown-item" href="#">
+          <i class="fa fa-upload"></i>
+          Upload
+        </a>
+        <a class="dropdown-item" href="#">
           <i class="fa fa-question-circle"></i>
           Help
         </a>

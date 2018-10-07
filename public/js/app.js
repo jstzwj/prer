@@ -51752,7 +51752,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51763,6 +51763,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -51885,6 +51889,8 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(4),
                 _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
                 _c(
                   "a",
                   {
@@ -51943,6 +51949,15 @@ var staticRenderFns = [
     return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
       _c("i", { staticClass: "fa fa-info" }),
       _vm._v("\n        Your Profile\n      ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fa fa-upload" }),
+      _vm._v("\n        Upload\n      ")
     ])
   },
   function() {
@@ -52853,11 +52868,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            videos: [{ thumbnail: 'https://cn.vuejs.org/images/logo.png', title: '123', text: '1234' }]
+        };
+    },
+
     components: {
-        'main-layout': __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue___default.a
+        "main-layout": __WEBPACK_IMPORTED_MODULE_0__layouts_MainLayout_vue___default.a
     }
 });
 
@@ -52869,7 +52900,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main-layout", [_vm._v("\n    123\n")])
+  return _c("main-layout", [
+    _c(
+      "div",
+      { staticClass: "d-flex flex-wrap" },
+      _vm._l(_vm.videos, function(item, index) {
+        return _c("div", { key: index, staticClass: "card" }, [
+          _c(
+            "div",
+            {
+              staticStyle: {
+                width: "286px",
+                height: "160px",
+                overflow: "hidden",
+                position: "relative"
+              }
+            },
+            [
+              _c("img", {
+                staticClass: "card-img-top",
+                staticStyle: { width: "286px" },
+                attrs: { src: item.thumbnail, alt: "Thumbnail" }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(item.title))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(item.text))])
+          ])
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -101457,13 +101523,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        'player-component': __WEBPACK_IMPORTED_MODULE_1__components_PlayerComponent_vue___default.a
-    }
+  components: {
+    "player-component": __WEBPACK_IMPORTED_MODULE_1__components_PlayerComponent_vue___default.a
+  }
 });
 
 /***/ }),
@@ -101731,7 +101815,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main-layout", [_c("player-component")], 1)
+  return _c("main-layout", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-md-center" }, [
+        _c("div", { staticClass: "col col-lg-12" }, [_c("player-component")], 1)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col col-lg-2" }, [
+          _vm._v("\n            1 of 3\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-auto" }, [
+          _vm._v("\n            Variable width content\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-lg-2" }, [
+          _vm._v("\n            3 of 3\n            ")
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
