@@ -27,6 +27,13 @@ class UserController extends Controller
             ->where('email', $mail)
             ->where('password', $password)
             ->exists();
+        
+        if (!$request->session()->has('user_data')) {
+            $user_data = DB::table('users')
+                ->where('email', $mail)
+                ->where('password', $password)->first();
+            $request->session()->put('user_data', $user_data);
+        }
         return json_encode(['status' => ($is_exists? 1 : 0)]);
     }
 

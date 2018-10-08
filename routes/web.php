@@ -23,6 +23,8 @@ Route::get('/list', 'VideoController@homeVideoList');
 
 Route::get('/videoinfo', 'VideoController@videoInfo');
 
+Route::post('/upload', 'VideoController@upload');
+
 Route::get('{path}', function () {
     return view('home');
 });
