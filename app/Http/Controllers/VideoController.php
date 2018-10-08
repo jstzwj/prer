@@ -78,7 +78,6 @@ class VideoController extends Controller
             // 用户已登陆，允许上传
             // $all_files = $request->files->all()['file'];
             $all_files = $request->file('file');
-
             $vid = DB::table('videos')->insertGetId(
                 ['author_id' => $user_data->id,
                 'title' => $title,
@@ -87,10 +86,10 @@ class VideoController extends Controller
                 'created_at' => Carbon::now()]
             );
 
-            var_dump($all_files);
+            
             foreach ($all_files as $file)
             {
-                $path = $file->store('videos');
+                $path = $file->store('public/videos');
                 // $path = Storage::putFile('videos', $file);
                 $pid = DB::table('video_parts')->insertGetId(
                     ['video_id' => $vid,

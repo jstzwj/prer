@@ -57,6 +57,8 @@ export default {
     onSubmit() {
         this.uploadForm.append("title", this.form.title);
         this.uploadForm.append("description", this.form.description);
+
+        this.$refs.uploader.submit();
         axios({
             data: this.uploadForm,
             url: "/upload",
@@ -68,8 +70,6 @@ export default {
         .catch(function(error) {
             console.log(error);
         });
-
-        this.$refs.uploader.submit();
     }
   }
 };
