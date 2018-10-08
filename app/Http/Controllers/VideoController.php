@@ -8,8 +8,32 @@ use Illuminate\Http\Request;
 
 use Carbon\Carbon;
 
+
 class VideoController extends Controller
 {
+    protected function toRelativeUrl($url)
+    {
+        if($url!=NULL&&$url[0]=='/')
+        {
+            return substr($url,1);
+        }
+        else
+        {
+            return $url;
+        }
+    }
+
+    protected function getVideoFrame($video_url, $pic_url)
+    {
+        // url proccess
+        $video_url = $this->toRelativeUrl($video_url);
+
+        $ffmpeg = \FFMpeg\FFMpeg::create();
+        $video = $ffmpeg->open($video_url);
+        $video
+            ->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(0))
+            ->save($pic_url);
+    }
     //
     public function homeVideoList(Request $request)
     {
@@ -66,7 +90,7 @@ class VideoController extends Controller
 
     public function upload(Request $request)
     {
-        if ($request->session()->has('user_id')) {
+        if ($request->session()->has('user_data')) {
             $user_data = $request->session()->get('user_data');
             $title = $request->title;
             $description = $request->description;
@@ -86,19 +110,32 @@ class VideoController extends Controller
                 'created_at' => Carbon::now()]
             );
 
+            $main_video_thumbnail = '';
             
             foreach ($all_files as $file)
             {
                 $path = $file->store('public/videos');
-                // $path = Storage::putFile('videos', $file);
+                // generate thumbnail
+                $original_name = $file->getClientOriginalName();
+                $part_name = str_replace(strrchr($original_name, "."),"",$original_name); 
+                $hash_name = basename($path,'.mp4');
+                $this->getVideoFrame(Storage::url($path), 'storage/pics/'.$hash_name.'.jpg');
+                if ($main_video_thumbnail == NULL)
+                    $main_video_thumbnail = 'storage/pics/'.$hash_name.'.jpg';
+                // record in database
                 $pid = DB::table('video_parts')->insertGetId(
                     ['video_id' => $vid,
-                    'title' => $file->getClientOriginalName(),
-                    'thumbnail' => '',
+                    'title' => $part_name,
+                    'thumbnail' => '/storage/pics'.$hash_name.'.jpg',
                     'url' => Storage::url($path),
                     'created_at' => Carbon::now()]
                 );
             }
+
+            DB::table('videos')
+                ->where('id', $vid)
+                ->update(['thumbnail' => $main_video_thumbnail]);
+
             return json_encode(['status'=> 1, 'code' => 0, 'msg' => 'Success: Succeed to upload.']);
         }else{
             return json_encode(['status'=> 0, 'code' => 0, 'msg' => 'Error: User not login.']);

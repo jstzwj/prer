@@ -10,14 +10,18 @@
     <title>Prer</title>
 
     <!-- Fonts -->
+    <!--
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+    -->
 
     <!-- Styles -->
     <style>
     </style>
 
+    <!--
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.css">
+    -->
 </head>
 
 <body>
@@ -25,8 +29,10 @@
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
+    <!--
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0/dist/DPlayer.min.js"></script>
+    -->
 </body>
 
 </html>
