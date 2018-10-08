@@ -34,7 +34,6 @@
                 .then(function (response) {
                     console.log(response);
                     Vue.set(that, 'videos', response.data);
-                    console.log(videos_retval);
                 })
                 .catch(function (error) {
                     console.log(error);

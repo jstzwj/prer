@@ -18,14 +18,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col col-lg-2">
-                    1 of 3
+                <div class="col col-lg-8">
+                    <h5>
+                        {{title}}
+                    </h5>
                 </div>
-                <div class="col-md-auto">
-                    Variable width content
+                <div class="col col-lg-4">
                 </div>
-                <div class="col col-lg-2">
-                    3 of 3
+            </div>
+            <div class="row">
+                <div class="col col-lg-8">
+                    {{description}}
+                </div>
+                <div class="col col-lg-4">
                 </div>
             </div>
         </div>
@@ -38,27 +43,50 @@
     export default {
         data(){
             return {
+                title: 'title',
+                description: '',
+                author: '',
                 player_url: '',
                 player_pic: '',
-                parts: [{title:'1part',
-                    url:'http://static.smartisanos.cn/common/video/t1-ui.mp4',
-                    pic:'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg'},
-                    {title:'2part',
-                    url:'http://192.168.162.2/static.smartisanos.cn/os/assets/videos/bigbang@2x.16541ee68979473a10401ca54cd2c1d7.mp4',
-                    pic:'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg'}]
+                parts: []
             }
         },
         mounted(){
-            var count = Object.keys(this.parts).length;
-            if(count>0)
-            {
-                Vue.set(this, 'player_url', this.parts[0].url);
-                Vue.set(this, 'player_pic', this.parts[0].pic);
-            }
-            else
-            {
-                console.log('Error: Negative parts number.');
-            }
+            var that = this;
+            axios({
+                method: "get",
+                url: `/videoinfo?vid=${that.$route.params.vid}`,
+                data: {}
+            })
+            .then(function (response) {
+                console.log(response);
+                Vue.set(that, 'parts', response.data.parts);
+                if (response.data.status == 1)
+                {
+                    // set video info
+                    Vue.set(that, 'title', response.data.title);
+                    Vue.set(that, 'description', response.data.description);
+                    // play video
+                    var count = Object.keys(that.parts).length;
+                    if(count > 0)
+                    {
+                        Vue.set(that, 'player_url', that.parts[0].url);
+                        Vue.set(that, 'player_pic', that.parts[0].pic);
+                    }
+                    else
+                    {
+                        console.log('Error: Negative parts number.');
+                    }
+                }
+                else
+                {
+                    console.log('Failed to get video info.');
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            
         },
         methods:{
             changePart(index) {
