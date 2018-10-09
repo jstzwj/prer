@@ -19,6 +19,7 @@ class CreateVideoPartsTable extends Migration
             $table->string('title');
             $table->string('thumbnail');
             $table->string('url');
+            $table->string('size');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
