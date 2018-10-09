@@ -29921,14 +29921,6 @@ Vue.component('main-layout', __webpack_require__(17));
 
 
 
-// router
-var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_10__pages_Home_vue___default.a }, { path: '/signin', component: __WEBPACK_IMPORTED_MODULE_11__pages_Signin_vue___default.a }, { path: '/signup', component: __WEBPACK_IMPORTED_MODULE_12__pages_Signup_vue___default.a }, { path: '/upload', component: __WEBPACK_IMPORTED_MODULE_14__pages_Upload_vue___default.a }, { path: '/watch/:vid', component: __WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue___default.a }, { path: '*', component: __WEBPACK_IMPORTED_MODULE_15__pages_Code404_vue___default.a }];
-
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    mode: 'history',
-    routes: routes
-});
-
 // states
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     state: {
@@ -29950,6 +29942,38 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
             state.isSignin = false;
         }
     }
+});
+
+// router
+var routes = [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_10__pages_Home_vue___default.a }, { path: '/signin', component: __WEBPACK_IMPORTED_MODULE_11__pages_Signin_vue___default.a }, { path: '/signup', component: __WEBPACK_IMPORTED_MODULE_12__pages_Signup_vue___default.a }, { path: '/upload', component: __WEBPACK_IMPORTED_MODULE_14__pages_Upload_vue___default.a }, { path: '/watch/:vid', component: __WEBPACK_IMPORTED_MODULE_13__pages_Watch_vue___default.a }, { path: '*', component: __WEBPACK_IMPORTED_MODULE_15__pages_Code404_vue___default.a }];
+
+var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    mode: 'history',
+    routes: routes
+});
+
+router.beforeEach(function (to, from, next) {
+    console.log('from ' + from.path + ' to ' + to.path);
+
+    if (from.path == '/') {
+        __WEBPACK_IMPORTED_MODULE_2_axios___default()({
+            data: {},
+            url: "/signininfo",
+            method: "get"
+        }).then(function (response) {
+            console.log(response);
+            if (response.data.status == 1) {
+                store.commit('setUserName', response.data.name);
+                store.commit('setUserMail', response.data.email);
+                store.commit('setSignin');
+            } else {
+                store.commit('setSignout');
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+    next();
 });
 
 var app = new Vue({
@@ -99996,7 +100020,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100068,6 +100092,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     signout: function signout() {
       console.log('user sign out.');
       this.$store.commit('setSignout');
+      axios({
+        method: "post",
+        url: "/signout",
+        data: {}
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 });

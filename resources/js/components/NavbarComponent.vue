@@ -58,6 +58,17 @@
       signout() {
         console.log('user sign out.');
         this.$store.commit('setSignout');
+        axios({
+          method: "post",
+          url: "/signout",
+          data: {}
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       }
     }
   };

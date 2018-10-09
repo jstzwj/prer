@@ -17,11 +17,17 @@ Route::get('/', function () {
 
 Route::post('/signin', 'UserController@signin');
 
+Route::post('/signout', 'UserController@signout');
+
 Route::post('/signup', 'UserController@signup');
 
 Route::get('/list', 'VideoController@homeVideoList');
 
 Route::get('/videoinfo', 'VideoController@videoInfo');
+
+Route::get('/userinfo', 'UserController@userInfo');
+
+Route::get('/signininfo', 'UserController@signinInfo');
 
 Route::post('/upload', 'VideoController@upload');
 

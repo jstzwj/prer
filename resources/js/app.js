@@ -64,21 +64,6 @@ import Upload from './pages/Upload.vue'
 import Code404 from './pages/Code404.vue'
 
 
-// router
-const routes = [
-    { path: '/', component: Home },
-    { path: '/signin', component: Signin },
-    { path: '/signup', component: Signup },
-    { path: '/upload', component: Upload },
-    { path: '/watch/:vid', component: Watch },
-    { path: '*', component: Code404 }
-]
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: routes
-})
-
 // states
 const store = new Vuex.Store({
     state: {
@@ -100,6 +85,51 @@ const store = new Vuex.Store({
             state.isSignin = false;
         }
     }
+});
+
+// router
+const routes = [
+    { path: '/', component: Home },
+    { path: '/signin', component: Signin },
+    { path: '/signup', component: Signup },
+    { path: '/upload', component: Upload },
+    { path: '/watch/:vid', component: Watch },
+    { path: '*', component: Code404 }
+];
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: routes
+});
+
+router.beforeEach((to, from, next) => {
+    console.log(`from ${from.path} to ${to.path}`);
+
+    if (from.path=='/')
+    {
+        axios({
+            data: {},
+            url: "/signininfo",
+            method: "get"
+        })
+        .then(function(response) {
+            console.log(response);
+            if(response.data.status == 1)
+            {
+                store.commit('setUserName', response.data.name);
+                store.commit('setUserMail', response.data.email);
+                store.commit('setSignin');
+            }
+            else
+            {
+                store.commit('setSignout');
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
+   next();
 });
 
 

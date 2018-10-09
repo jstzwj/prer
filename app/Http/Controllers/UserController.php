@@ -37,6 +37,20 @@ class UserController extends Controller
         return json_encode(['status' => ($is_exists? 1 : 0)]);
     }
 
+    public function signout(Request $request)
+    {
+        if ($request->session()->has('user_data'))
+        {
+            $request->session()->forget('user_data');
+            $request->session()->flush();
+            return json_encode(['status' => 1]);
+        }
+        else
+        {
+            return json_encode(['status' => 0]);
+        }
+    }
+
     public function signup(Request $request)
     {
         $mail = $request->mail;
@@ -55,6 +69,44 @@ class UserController extends Controller
                 ['name' => $mail, 'email' => $mail, 'password' => $password]
             );
             return json_encode(['status' => 1]);
+        }
+    }
+
+    public function userInfo(Request $request)
+    {
+        if ($request->session()->has('user_data')) {
+            $user_data = DB::table('users')
+                ->where('id', $request->id)
+                ->select('id', 'name', 'email')->first();
+
+            $user_data = (array)$user_data;
+            $user_data['status'] = 1;
+            
+            return json_encode($user_data);
+        }
+        else
+        {
+            return json_encode(['status' => 0]);
+        }
+    }
+
+    public function signininfo(Request $request)
+    {
+        if ($request->session()->has('user_data'))
+        {
+            $user_data = $request->session()->get('user_data');
+            $retval = DB::table('users')
+                ->where('id', $user_data->id)
+                ->select('id', 'name', 'email')->first();
+
+            $retval = (array)$retval;
+            $retval['status'] = 1;
+            
+            return json_encode($retval);
+        }
+        else
+        {
+            return json_encode(['status' => 0]);
         }
     }
 }
