@@ -34,6 +34,19 @@ class VideoController extends Controller
             ->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(0))
             ->save($pic_url);
     }
+
+    // 320 240
+    protected function resizeVideo($video_url, $width, $height)
+    {
+        $video_url = $this->toRelativeUrl($video_url);
+
+        $ffmpeg = \FFMpeg\FFMpeg::create();
+        $video = $ffmpeg->open($video_url);
+        $video
+            ->filters()
+            ->resize(new \FFMpeg\Coordinate\Dimension($width, $height), \FFMpeg\Filters\Video\ResizeFilter::RESIZEMODE_INSET, true)
+            ->synchronize();
+    }
     //
     public function homeVideoList(Request $request)
     {
