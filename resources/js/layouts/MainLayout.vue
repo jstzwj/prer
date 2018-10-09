@@ -1,10 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
         <header>
             <navbar-component></navbar-component>
         </header>
         <main role="main">
-            <slot></slot>
+            <div class="my-2">
+                <slot></slot>
+            </div>
         </main>
         <footer>
             <footer-component></footer-component>

@@ -100020,7 +100020,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -100080,29 +100080,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      activeIndex: "1"
-    };
-  },
+    data: function data() {
+        return {
+            activeIndex: "1"
+        };
+    },
 
-  methods: {
-    signout: function signout() {
-      console.log('user sign out.');
-      this.$store.commit('setSignout');
-      axios({
-        method: "post",
-        url: "/signout",
-        data: {}
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
+    methods: {
+        signout: function signout() {
+            console.log('user sign out.');
+            this.$store.commit('setSignout');
+            axios({
+                method: "post",
+                url: "/signout",
+                data: {}
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     }
-  }
 });
 
 /***/ }),
@@ -100114,89 +100115,113 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    {
-      staticClass:
-        "d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow"
-    },
+    "nav",
+    { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" },
     [
+      _c("router-link", { staticClass: "navbar-brand", attrs: { to: "/" } }, [
+        _vm._v("Prer")
+      ]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _c(
-        "router-link",
+        "div",
         {
-          staticClass: "my-0 mr-md-auto font-weight-normal",
-          attrs: { to: "/" }
+          staticClass: "collapse navbar-collapse",
+          attrs: { id: "navbarsExample05" }
         },
-        [_vm._v("Prer")]
-      ),
-      _vm._v(" "),
-      _c("nav", { staticClass: "my-2 my-md-0 mr-md-3" }),
-      _vm._v(" "),
-      this.$store.state.isSignin == false
-        ? [
-            _c(
-              "router-link",
-              {
-                staticClass: "btn btn-outline-primary mx-2",
-                attrs: { to: "/signup" }
-              },
-              [_vm._v("Sign up")]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              { staticClass: "btn btn-primary mx-2", attrs: { to: "/signin" } },
-              [_vm._v("Sign in")]
-            )
-          ]
-        : [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "dropdown-menu",
-                attrs: { "aria-labelledby": "dropdown_user" }
-              },
-              [
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "dropdown-item", attrs: { to: "/upload" } },
-                  [
-                    _c("i", { staticClass: "fa fa-upload" }),
-                    _vm._v("\n        Upload\n      ")
+        [
+          _c(
+            "ul",
+            { staticClass: "navbar-nav ml-auto" },
+            [
+              this.$store.state.isSignin == true
+                ? [
+                    _c("li", { staticClass: "nav-item dropdown" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "dropdown-menu dropdown-menu-right",
+                          attrs: { "aria-labelledby": "dropdown_user" }
+                        },
+                        [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { to: "/upload" }
+                            },
+                            [
+                              _c("i", { staticClass: "fa fa-upload" }),
+                              _vm._v(
+                                "\n                            Upload\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "dropdown-divider" }),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  _vm.signout()
+                                }
+                              }
+                            },
+                            [
+                              _c("i", { staticClass: "fa fa-sign-out" }),
+                              _vm._v(
+                                "\n                            Sign out\n                        "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ])
                   ]
-                ),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-item",
-                    attrs: { href: "#" },
-                    on: {
-                      click: function($event) {
-                        _vm.signout()
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-sign-out" }),
-                    _vm._v("\n        Sign out\n      ")
+                : _vm._e(),
+              _vm._v(" "),
+              this.$store.state.isSignin == false
+                ? [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-primary mx-2",
+                        attrs: { to: "/signup" }
+                      },
+                      [_vm._v("Sign up")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-primary mx-2",
+                        attrs: { to: "/signin" }
+                      },
+                      [_vm._v("Sign in")]
+                    )
                   ]
-                )
-              ],
-              1
-            )
-          ]
+                : _vm._e()
+            ],
+            2
+          )
+        ]
+      )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = [
@@ -100204,9 +100229,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "p-2 text-dark", attrs: { href: "#" } }, [
-      _c("i", { staticClass: "fa fa-envelope-o" })
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarsExample05",
+          "aria-controls": "navbarsExample05",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
   },
   function() {
     var _vm = this
@@ -100215,7 +100252,7 @@ var staticRenderFns = [
     return _c(
       "a",
       {
-        staticClass: "dropdown-toggle",
+        staticClass: "nav-link dropdown-toggle",
         attrs: {
           href: "#",
           id: "dropdown_user",
@@ -100233,7 +100270,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
       _c("i", { staticClass: "fa fa-info" }),
-      _vm._v("\n        Your Profile\n      ")
+      _vm._v(
+        "\n                            Your Profile\n                        "
+      )
     ])
   },
   function() {
@@ -100242,7 +100281,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
       _c("i", { staticClass: "fa fa-question-circle" }),
-      _vm._v("\n        Help\n      ")
+      _vm._v("\n                            Help\n                        ")
     ])
   },
   function() {
@@ -100251,7 +100290,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
       _c("i", { staticClass: "fa fa-cog" }),
-      _vm._v("\n        Setting\n      ")
+      _vm._v("\n                            Setting\n                        ")
     ])
   }
 ]
@@ -101047,6 +101086,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -101065,10 +101106,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
     _c("header", [_c("navbar-component")], 1),
     _vm._v(" "),
-    _c("main", { attrs: { role: "main" } }, [_vm._t("default")], 2),
+    _c("main", { attrs: { role: "main" } }, [
+      _c("div", { staticClass: "my-2" }, [_vm._t("default")], 2)
+    ]),
     _vm._v(" "),
     _c("footer", [_c("footer-component")], 1)
   ])
@@ -102038,6 +102081,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -102047,6 +102096,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 title: "",
                 description: ""
             },
+            dialogVisible: false,
+            progress: 0,
+
             uploadForm: new FormData(),
             fileList: []
         };
@@ -102058,6 +102110,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return false;
         },
         onSubmit: function onSubmit() {
+            var _this = this;
+
+            Vue.set(this, 'dialogVisible', true);
             this.uploadForm.append("title", this.form.title);
             this.uploadForm.append("description", this.form.description);
 
@@ -102065,12 +102120,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios({
                 data: this.uploadForm,
                 url: "/upload",
-                method: "post"
+                method: "post",
+                onUploadProgress: function onUploadProgress(progressEvent) {
+                    Vue.set(_this, 'progress', parseInt(progressEvent.loaded / progressEvent.total * 100));
+                }
             }).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
+        },
+        backHome: function backHome() {
+            this.$router.push({ path: '/' });
         }
     }
 });
@@ -102191,6 +102252,63 @@ var render = function() {
                     )
                   ],
                   1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "el-dialog",
+              {
+                attrs: {
+                  title: "Notice",
+                  visible: _vm.dialogVisible,
+                  width: "30%",
+                  "close-on-click-modal": false,
+                  "close-on-press-escape": false,
+                  "show-close": false
+                },
+                on: {
+                  "update:visible": function($event) {
+                    _vm.dialogVisible = $event
+                  }
+                }
+              },
+              [
+                _c("span", [_vm._v("Uploading")]),
+                _vm._v(" "),
+                _c("el-progress", {
+                  attrs: { type: "circle", percentage: _vm.progress }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "dialog-footer",
+                    attrs: { slot: "footer" },
+                    slot: "footer"
+                  },
+                  [
+                    _vm.progress == 100
+                      ? [
+                          _c("div", [_vm._v("Uploading completed")]),
+                          _vm._v(" "),
+                          _c(
+                            "el-button",
+                            {
+                              attrs: { type: "primary" },
+                              on: {
+                                click: function($event) {
+                                  _vm.backHome()
+                                }
+                              }
+                            },
+                            [_vm._v("Back to home")]
+                          )
+                        ]
+                      : _vm._e()
+                  ],
+                  2
                 )
               ],
               1
